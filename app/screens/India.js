@@ -5,7 +5,9 @@ import {
   View,
   ScrollView,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Linking,
+  WebView
 } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-base';
  class  India extends Component {
@@ -25,7 +27,7 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
     {
       console.log('called');
 
-            fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5497647da2114041ad647eba8e002d6f')
+            fetch('https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=5497647da2114041ad647eba8e002d6f')
           .then((response) => response.json())
           .then((responseJson) => {
             console.log(responseJson);
@@ -45,6 +47,11 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
           this.getData();
 
   }
+  openUrl(link){
+
+    Linking.openURL(link).catch(err => console.error('An error occurred', err));
+
+  }
   _renderItem = ({item}) => (
 
       <View style={{paddingLeft:5,paddingRight: 5}}>
@@ -60,7 +67,9 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
                   </Body>
                 </CardItem>
                 <CardItem footer>
-                  <Text numberOfLines={1} style={{color:'blue'}} onPress={()=>alert('go to page')}>{item.url}</Text>
+                  <Text numberOfLines={1} style={{color:'blue'}} onPress={()=>this.openUrl(item.url)}>
+                    {item.url}
+                  </Text>
                 </CardItem>
             </Card>
             
