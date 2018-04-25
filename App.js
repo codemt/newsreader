@@ -16,6 +16,8 @@ import India from './app/screens/India';
 import { Actions , Router , Scene } from 'react-native-router-flux';
 import America from './app/screens/America';
 import AppFooter from './app/screens/AppFooter';
+import England from './app/screens/England';
+import Canada from './app/screens/Canada';
 
 
 export default class App extends Component {
@@ -34,7 +36,17 @@ export default class App extends Component {
                     key="America"
                     component={America}
                     title="News From America"
-                    />           
+                    /> 
+                    <Scene
+                    key="England"
+                    component={England}
+                    title="News From UK"
+                    /> 
+                    <Scene
+                    key="Canada"
+                    component={Canada}
+                    title="News From Canada"
+                    />                 
             </Scene>
           </Router>
 

@@ -12,20 +12,16 @@ render() {
                 <Footer >
                       <FooterTab style={{backgroundColor: '#fff'}}>
                             <Button  onPress={Actions.India}>
-                                <Icon name='ios-home'/>
                                 <Text> INDIA </Text>
                             </Button>
                             <Button  onPress={Actions.America}>
-                                <Icon name='ios-water'/>
                                 <Text>  US </Text>
                             </Button>
-                            <Button onPress={Actions.AboutUs}>
-                                <Icon name='ios-body'/>
-                                <Text> CHINA </Text>
+                            <Button onPress={Actions.England}>
+                                <Text> UK </Text>
                             </Button>
-                            <Button onPress={Actions.ApiData}>
-                                <Icon name='ios-download-outline'/>
-                                <Text> RUSSIA </Text>
+                            <Button onPress={Actions.Canada}>
+                                <Text> CANADA </Text>
                             </Button>
                        </FooterTab>
 
