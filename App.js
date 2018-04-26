@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 import { Container , StyleProvider } from 'native-base';
 import India from './app/screens/India';
@@ -21,6 +22,8 @@ import Canada from './app/screens/Canada';
 
 
 class TabIcon extends Component {
+
+  
 
   render() {
     var color = this.props.tintColor =='#3478f6' ? '#f2268c' : '#000000';
@@ -38,7 +41,7 @@ export default class App extends Component {
     return (
       <Container> 
                 <Router>
-            <Tabs key="root" showLabel={false} tabBarPosition={'bottom'}>
+            <Tabs lazy key="root" showLabel={false} tabBarPosition={'bottom'} activeBackgroundColor='#95a5a6' navigationBarStyle={{backgroundColor: '#95a5a6'}}  >
                   <Scene
                     key="India"
                     component={India}

@@ -7,7 +7,9 @@ import {
   FlatList,
   TouchableOpacity,
   Linking,
-  WebView
+  WebView,
+  ActivityIndicator,
+  StatusBar
 } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-base';
  class  India extends Component {
@@ -19,7 +21,8 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
                 super()
                 this.state={
 
-                    data:[]
+                    data:[],
+                    animating:true
                 }
                 
     }
@@ -31,7 +34,7 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
           .then((response) => response.json())
           .then((responseJson) => {
             console.log(responseJson);
-            this.setState({data : responseJson.articles});
+            this.setState({data : responseJson.articles,animating:false});
 
           })
 
@@ -80,10 +83,30 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
         
       
  )
+ emptyRenderFooter() {
+  return (
+      <View>
+      </View>
+  )
+}
+
+renderFooter(obj) {
+  var load;
+  load = <View>
+      <ActivityIndicator color="#95a5a6"
+          animating={obj.state.animating}
+          style={{padding:10}}
+          size={'large'}/>
+       </View>;
+  return (
+      load
+  )
+}
 
 
   render() {
     return (
+      
       <ScrollView showsVerticalScrollIndicator={false}>
         
           
@@ -92,6 +115,7 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
           data={this.state.data}
           renderItem={this._renderItem}
           keyExtractor={item => item.id}
+          ListFooterComponent={this.state.animating ? this.renderFooter(this) : this.emptyRenderFooter}
           />
 
       
