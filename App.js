@@ -26,7 +26,7 @@ class TabIcon extends Component {
   
 
   render() {
-    var color = this.props.tintColor =='#3478f6' ? '#f2268c' : '#000000';
+    var color = 'black';
     return (
       <View style={{flex:1,color:color, flexDirection:'column', alignItems:'center', alignSelf:'center', justifyContent: 'center'}}>
         <Text> {this.props.iconText} </Text> 
@@ -41,13 +41,14 @@ export default class App extends Component {
     return (
       <Container> 
                 <Router>
-            <Tabs lazy key="root" showLabel={false} tabBarPosition={'bottom'} activeBackgroundColor='#95a5a6' navigationBarStyle={{backgroundColor: '#95a5a6'}}  >
+            <Tabs lazy key="root" showLabel={Platform.OS === 'ios'?true:false} tabBarPosition={'bottom'} TabIcon={true} activeBackgroundColor='#95a5a6' navigationBarStyle={{backgroundColor: '#95a5a6'}}  >
                   <Scene
                     key="India"
                     component={India}
                     iconText="INDIA"
                     icon={TabIcon}
                     title="News From India"
+                    tabBarLabel="India"
                     />
                   <Scene
                     key="America"
@@ -55,6 +56,7 @@ export default class App extends Component {
                     iconText="AMERICA"
                     icon={TabIcon}
                     title="News From America"
+                    tabBarLabel="America"
                     /> 
                     <Scene
                     key="England"
@@ -62,6 +64,7 @@ export default class App extends Component {
                     iconText="ENGLAND"
                     icon={TabIcon}
                     title="News From UK"
+                    tabBarLabel="England"
                     /> 
                     <Scene
                     key="Canada"
@@ -69,6 +72,7 @@ export default class App extends Component {
                     iconText="CANADA"
                     icon={TabIcon}
                     title="News From Canada"
+                    tabBarLabel="Canada"
                     />                 
             </Tabs>
           </Router>
